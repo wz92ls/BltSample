@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ble/BLE_BluetoothLeService.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ble/BLE_DeviceControlActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ble/BLE_DeviceScanActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/DeviceControlActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/Test.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/TestDataActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/UserDataOperationActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/UserHistoryDataActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/UserInfoActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/UserListActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/adapter/UserListAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/entity/OperationData.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/entity/TestData.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/entity/UserData.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/ryfitdemo/tizhi_MainActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/blue/xueya/DeviceScanActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/ble_actionbar_indeterminate_progress.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/ble_activity_main.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/ble_gatt_services_characteristics.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/ble_listitem_device.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_actionbar_indeterminate_progress.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_activity_main.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_gatt_services_characteristics.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_history_user_info.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_history_user_info_item.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_listitem_device.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_test_data.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_user_data_operation.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_user_info.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/layout/tizhi_user_list_item.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/res/menu" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

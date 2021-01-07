@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: ./libs/RyFitBluetoothLibrary_1.4.jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/RyFitBluetoothLibrary_1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

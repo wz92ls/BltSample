@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.blue"
+    android:versionCode="1"
+    android:versionName="1.0.0">
+    <uses-sdk android:minSdkVersion="18"
+        android:targetSdkVersion="18"/>
+    <!-- Declare this required feature if you want to make the app available to BLE-capable
+    devices only.  If you want to make your app available to devices that don't support BLE,
+    you should omit this in the manifest.  Instead, determine BLE capability by using
+    PackageManager.hasSystemFeature(FEATURE_BLUETOOTH_LE) -->
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+
+    <application android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:name="com.example.bluetoothlibrary.Config"
+        >
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".xueya.DeviceScanActivity"></activity>
+        <activity android:name=".ryfitdemo.DeviceControlActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ryfitdemo.UserListActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ryfitdemo.UserDataOperationActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ryfitdemo.UserInfoActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ryfitdemo.TestDataActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ryfitdemo.UserHistoryDataActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ryfitdemo.tizhi_MainActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ble.BLE_DeviceScanActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".ble.BLE_DeviceControlActivity"
+                  android:screenOrientation="portrait"/>
+        <service android:name=".ble.BLE_BluetoothLeService" android:enabled="true"/>
+
+        <service android:name="com.chronocloud.ryfibluetoothlibrary.service.BluetoothService" android:enabled="true"/>
+        <meta-data android:name="ryfit_key" android:value="BC456971AED3973A2A90D26C22C9D96DDDC7140F238D12CB991CF99BE60AA525"/>
+        <meta-data android:name="ryfit_business_number" android:value="num-210201510002"/>
+    </application>
+</manifest>

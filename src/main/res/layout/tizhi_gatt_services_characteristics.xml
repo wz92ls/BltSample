@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<LinearLayout android:id="@+id/tvLinearLayout"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#FFFFFFFF">
+	<ListView 
+	    android:id="@+id/lv_data"
+	    android:layout_width="match_parent"
+	   android:layout_height="0dip"
+	    android:layout_weight="1"
+	    ></ListView>
+	<LinearLayout 
+	    android:id="@+id/ll_test"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dip"
+	    android:layout_weight="1"
+	    android:gravity="center"
+	    android:visibility="gone"
+	    android:padding="10dip"
+	    android:orientation="vertical">
+	    <LinearLayout android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+	        <Button android:id="@+id/btn_read"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/readnumber"/>
+	        <EditText 
+	            android:id="@+id/et_number"
+	            android:layout_width="0dip"
+	            android:singleLine="true"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"/>
+	            <Button android:id="@+id/btn_write"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/writenumber"/>
+	    </LinearLayout>
+	    <TextView 
+       android:id="@+id/scale_weight"
+       android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30dip"
+                android:textStyle="bold"
+                android:text="0.0kg"/>
+	     <TextView 
+       android:id="@+id/tv_mac_address"
+       android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+	    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:gravity="center"
+	    android:orientation="horizontal">
+	    <TextView android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginRight="20dip"
+	        android:text="@string/p9_test"/>
+	     <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sex"/>
+        <RadioGroup 
+            android:id="@+id/rg_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/rb_man"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/man"/>
+            <RadioButton android:id="@+id/rb_woman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/woman"/>
+        </RadioGroup>
+	    </LinearLayout>
+	     <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/age"/>
+       <EditText android:id="@+id/et_age"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="30"
+           android:inputType="number"/>
+       <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:text="@string/height"/>
+       <EditText android:id="@+id/et_height"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="170"
+           android:inputType="number"/>
+       <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cm"/>
+    </LinearLayout>
+    <Button android:id="@+id/btn_send"
+         android:layout_width="match_parent"
+         android:layout_margin="10dip"
+         android:layout_height="wrap_content"
+         android:background="@color/red"
+         android:textColor="@android:color/white"
+         android:text="@string/scale"/>
+    	<LinearLayout android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:visibility="gone"
+	    android:orientation="horizontal">
+	    <EditText 
+	        android:id="@+id/et_value"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:text="A0"
+	    android:layout_height="wrap_content"/>
+	    <Button android:id="@+id/btn_send1"
+	        android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="@string/send"/>
+	</LinearLayout>
+	</LinearLayout>
+
+</LinearLayout>
