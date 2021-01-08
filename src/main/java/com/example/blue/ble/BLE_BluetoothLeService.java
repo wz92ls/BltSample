@@ -48,6 +48,8 @@ public class BLE_BluetoothLeService extends Service {
             "com.example.bluetooth.le.ACTION_DATA_AVAILABLE";
     public final static String EXTRA_DATA =
             "com.example.bluetooth.le.EXTRA_DATA";
+    public final static String BYTEEXTRA_DATA =
+            "com.example.bluetooth.le.BYTEEXTRA_DATA";
 
     public final static UUID UUID_NOTIFY =
             UUID.fromString("0000ffe1-0000-1000-8000-00805f9b34fb");
@@ -60,6 +62,11 @@ public class BLE_BluetoothLeService extends Service {
     {
     	mNotifyCharacteristic.setValue(strValue.getBytes());
     	mBluetoothGatt.writeCharacteristic(mNotifyCharacteristic);
+    }
+    public void WriteValue(byte [] strValue)
+    {
+        mNotifyCharacteristic.setValue(strValue);
+        mBluetoothGatt.writeCharacteristic(mNotifyCharacteristic);
     }
     
     public void findService(List<BluetoothGattService> gattServices)
@@ -201,6 +208,9 @@ public class BLE_BluetoothLeService extends Service {
             //    stringBuilder.append(String.format("%02X ", byteChar));
             //intent.putExtra(EXTRA_DATA, new String(data) + "\n" + stringBuilder.toString());
             intent.putExtra(EXTRA_DATA, new String(data));
+            intent.putExtra(BYTEEXTRA_DATA, data);
+
+
         }
         sendBroadcast(intent);
     }

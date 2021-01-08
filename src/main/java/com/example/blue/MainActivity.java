@@ -3,9 +3,11 @@ package com.example.blue;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
+import com.example.blue.https.HttpClient;
 import com.example.blue.ryfitdemo.tizhi_MainActivity;
 import com.example.blue.ble.BLE_DeviceScanActivity;
 import com.example.blue.xueya.DeviceScanActivity;
@@ -33,12 +35,16 @@ public class MainActivity extends TabActivity implements View.OnClickListener{
         tv2.setOnClickListener(this);
         tv3.setOnClickListener(this);
         tabHost = getTabHost();
-        tabHost.addTab(getNewTab("tv1",R.string.unknown_device,R.drawable.ic_home, DeviceScanActivity.class));
-        tabHost.addTab(getNewTab("tv2",R.string.unknown_device,R.drawable.ic_home,tizhi_MainActivity.class));
+        tabHost.addTab(getNewTab("tv1",R.string.unknown_device,R.drawable.ic_launcher, DeviceScanActivity.class));
+        tabHost.addTab(getNewTab("tv2",R.string.unknown_device,R.drawable.ic_launcher,tizhi_MainActivity.class));
         tabHost.addTab(getNewTab("tv3",R.string.unknown_device,R.drawable.ic_launcher, BLE_DeviceScanActivity.class));
 //        tabHost.addTab(getNewTab("tv3",R.string.unknown_device,R.drawable.ic_scan,DeviceScanActivity.class));
 //        tabHost.addTab(getNewTab("tv4",R.string.unknown_device,R.drawable.ic_home,DeviceScanActivity.class));
         tabHost.setCurrentTabByTag("tv1");
+
+
+
+
     }
 
 

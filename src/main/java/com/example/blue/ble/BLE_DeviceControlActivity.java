@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.example.blue.R;
+import com.example.blue.https.HttpClient;
 
 
 /**
@@ -47,11 +48,11 @@ public class BLE_DeviceControlActivity extends Activity {
     private String mDeviceAddress;
     private BLE_BluetoothLeService mBleBluetoothLeService;
     private boolean mConnected = false;
+    private String strcmd="None";
     
     EditText edtSend;
 	ScrollView svResult;
-	Button btnSend;
-
+	Button btnSend,btndeviceSend;
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
@@ -97,15 +98,35 @@ public class BLE_DeviceControlActivity extends Activity {
             	mDataField.setText("");
             	ShowDialog();
             	btnSend.setEnabled(true);
+            	btndeviceSend.setEnabled(true);
             	Log.e(TAG, "In what we need");
             	invalidateOptionsMenu();
             }else if (BLE_BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) { //收到数据
             	Log.e(TAG, "RECV DATA");
-            	String data = intent.getStringExtra(BLE_BluetoothLeService.EXTRA_DATA);
-            	if (data != null) {
+//            	final String data = intent.getStringExtra(BLE_BluetoothLeService.EXTRA_DATA);
+                final byte[] byteArray = intent.getByteArrayExtra(BLE_BluetoothLeService.BYTEEXTRA_DATA);
+                Log.w(TAG,  hexBytes2Str(byteArray));
+                if(strcmd=="deviceSend")
+                {
+                    new Thread(new Runnable(){
+                        @Override
+                        public void run() {
+                            try {
+                                String result= HttpClient.Https_gongyitech.Post_deviceReturn(hexBytes2Str(byteArray));
+                                Log.w(TAG,result);
+                                strcmd="None";
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                strcmd="None";
+                            }
+                        }
+                    }).start();
+                }
+
+            	if (byteArray != null) {
                 	if (mDataField.length() > 500)
                 		mDataField.setText("");
-                    mDataField.append(data); 
+                    mDataField.append(new String(byteArray));
                     svResult.post(new Runnable() {
             			public void run() {
             				svResult.fullScroll(ScrollView.FOCUS_DOWN);
@@ -138,6 +159,11 @@ public class BLE_DeviceControlActivity extends Activity {
         btnSend = (Button) this.findViewById(R.id.btnSend);
 		btnSend.setOnClickListener(new ClickEvent());
 		btnSend.setEnabled(false);
+
+        btndeviceSend= (Button) this.findViewById(R.id.mt_deviceSend);
+        btndeviceSend.setOnClickListener(new ClickEvent());
+        btndeviceSend.setEnabled(true);
+
 
         getActionBar().setTitle(mDeviceName);
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -220,7 +246,7 @@ public class BLE_DeviceControlActivity extends Activity {
 
  // 按钮事件
 	class ClickEvent implements View.OnClickListener {
-		@Override
+        @Override
 		public void onClick(View v) {
 			if (v == btnSend) {
 				if(!mConnected) return;
@@ -236,10 +262,54 @@ public class BLE_DeviceControlActivity extends Activity {
 					imm.hideSoftInputFromWindow(edtSend.getWindowToken(), 0);
 				//todo Send data
 			}
+			if(v == btndeviceSend){
+                new Thread(new Runnable(){
+                    @Override
+                    public void run() {
+                        try {
+                            String result=HttpClient.Https_gongyitech.Post_deviceSend();
+                            Log.w(TAG,result);
+                            byte[] ret= hexStr2Bytes(result);
+                            mBleBluetoothLeService.WriteValue(ret);
+                            strcmd="deviceSend";
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            strcmd="None";
+                        }
+                    }
+                }).start();
+            }
+
 		}
 
 	}
-	
+    private static byte[] hexStr2Bytes(String src)
+    {
+        String[] bufsrc=src.split("[,]");
+        int l=bufsrc.length;
+        byte[] ret = new byte[l];
+        for (int i = 0; i < l; i++)
+        {
+            int tt= Integer.parseInt(bufsrc[i]);
+            byte t=(byte)tt;
+            ret[i] = t;
+        }
+        return ret;
+    }
+    private static String hexBytes2Str(byte[] src)
+    {
+        String ret="";
+        int l=src.length;
+        for (int i = 0; i < l; i++)
+        {
+            int tt= src[i]&0xFF;
+            if(ret!="")
+                ret=ret+","+Integer.toString(tt);
+            else
+                ret=Integer.toString(tt);
+        }
+        return ret;
+    }
     private static IntentFilter makeGattUpdateIntentFilter() {                        //注册接收的事件
         final IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(BLE_BluetoothLeService.ACTION_GATT_CONNECTED);
