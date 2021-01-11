@@ -229,6 +229,7 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
             public void onClick(View v) {
               //start to sync data
                 String  connectingDevice=config.getConnectPreipheralOpsition().getBluetooth();
+                Log.d(TAG,connectingDevice);
                 if (connectingDevice.equals(Constant.BLT_WBP))
                 {
                     resolveWbp.SendForAll(mBLE);

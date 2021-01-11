@@ -19,6 +19,7 @@ import android.view.*;
 import android.widget.*;
 import android.widget.Button;
 import com.chronocloud.ryfibluetoothlibrary.BluetoothDeviceOpration;
+import com.chronocloud.ryfibluetoothlibrary.BluetoothOpration;
 import com.chronocloud.ryfibluetoothlibrary.listener.BlueScaleCallBack;
 import com.example.blue.R;
 
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Vector;
 
 public class tizhi_MainActivity extends Activity {
+//	 public static BluetoothOpration _BluetoothOpration;
 	 private LeDeviceListAdapter mLeDeviceListAdapter;
 //    private BluetoothAdapter mBluetoothAdapter;
      private boolean mScanning;
@@ -44,6 +46,7 @@ public class tizhi_MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+//		_BluetoothOpration=new BluetoothOpration(this);
 //		getActionBar().setTitle(R.string.title_devices);
 		setContentView(R.layout.tizhi_activity_main);
 		mContext=this;
@@ -91,6 +94,8 @@ public class tizhi_MainActivity extends Activity {
             return;
         }
         mDeviceOpration=new BluetoothDeviceOpration(mContext);
+
+
 	}
 
 	@Override
@@ -131,7 +136,10 @@ public class tizhi_MainActivity extends Activity {
 					intent.setClass(tizhi_MainActivity.this, DeviceControlActivity.class);
 					intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_NAME, device.getName());
 					intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS, device.getAddress());
+
+
 					DeviceControlActivity.mBluetoothDevice=device;
+
 					if (mScanning) {
 						mDeviceOpration.stopScan();
 						mScanning = false;
@@ -192,7 +200,7 @@ public class tizhi_MainActivity extends Activity {
 	    protected void onListItemClick(ListView l, View v, int position, long id) {
 	        final BluetoothDevice device = mLeDeviceListAdapter.getDevice(position);
 	        if (device == null) return;
-	        final Intent intent = new Intent(this, DeviceControlActivity.class);
+	        final Intent intent = new Intent(tizhi_MainActivity.this, DeviceControlActivity.class);
 	        
 	        intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_NAME, device.getName());
 	        intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS, device.getAddress());

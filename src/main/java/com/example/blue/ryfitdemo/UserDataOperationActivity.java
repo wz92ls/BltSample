@@ -17,6 +17,7 @@ import com.chronocloud.ryfibluetoothlibrary.BluetoothOpration;
 import com.chronocloud.ryfibluetoothlibrary.entity.TestDataInfo;
 import com.chronocloud.ryfibluetoothlibrary.entity.User;
 import com.chronocloud.ryfibluetoothlibrary.listener.BluetoothOprationCallback;
+import com.example.blue.MainActivity;
 import com.example.blue.R;
 import com.example.blue.ryfitdemo.entity.OperationData;
 import com.example.blue.ryfitdemo.entity.TestData;
@@ -72,7 +73,7 @@ public class UserDataOperationActivity extends Activity implements
 	 */
 	private void initAction() {
 		// TODO Auto-generated method stub
-		mBluetoothOpration = MyApplication._BluetoothOpration;
+		mBluetoothOpration = MainActivity._BluetoothOpration;
 		mBluetoothOpration.addBluetoothOprationCallback(BOcallback);
 		s_switch.setChecked(isTest);
 		s_switch.setOnCheckedChangeListener(new OnCheckedChangeListener() {

@@ -7,12 +7,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
+import com.chronocloud.ryfibluetoothlibrary.BluetoothOpration;
 import com.example.blue.https.HttpClient;
 import com.example.blue.ryfitdemo.tizhi_MainActivity;
 import com.example.blue.ble.BLE_DeviceScanActivity;
 import com.example.blue.xueya.DeviceScanActivity;
 
 public class MainActivity extends TabActivity implements View.OnClickListener{
+
+    public static BluetoothOpration _BluetoothOpration;
 
     private static final String TAG = "TabActivity";
     private Bundle mBundle = new Bundle();
@@ -22,9 +25,26 @@ public class MainActivity extends TabActivity implements View.OnClickListener{
     private TextView tv3;
     private String titel="";;
     @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        Log.i("info", "demo onLowMemory..");
+        _BluetoothOpration.disconnect();
+        _BluetoothOpration.onDestroy();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        _BluetoothOpration.disconnect();
+        _BluetoothOpration.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        _BluetoothOpration=new BluetoothOpration(this);
         setContentView(R.layout.activity_main);
         titel=getString(R.string.app_name)+"-"+getString(R.string.xueya);
         getActionBar().setTitle(titel);

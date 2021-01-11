@@ -263,7 +263,8 @@ public class BLE_DeviceScanActivity extends Activity {
 
         public void addDevice(BluetoothDevice device) {
             if(!mLeDevices.contains(device)) {
-                mLeDevices.add(device);
+                if(device.getName()!=null)
+                    mLeDevices.add(device);
             }
         }
 

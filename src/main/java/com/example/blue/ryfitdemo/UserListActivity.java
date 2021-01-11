@@ -15,6 +15,7 @@ import com.chronocloud.ryfibluetoothlibrary.BluetoothOpration;
 import com.chronocloud.ryfibluetoothlibrary.entity.TestDataInfo;
 import com.chronocloud.ryfibluetoothlibrary.entity.User;
 import com.chronocloud.ryfibluetoothlibrary.listener.BluetoothOprationCallback;
+import com.example.blue.MainActivity;
 import com.example.blue.R;
 import com.example.blue.ryfitdemo.adapter.UserListAdapter;
 import com.example.blue.ryfitdemo.entity.UserData;
@@ -50,7 +51,7 @@ public class UserListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tizhi_gatt_services_characteristics);
 		context=this;
-		mBluetoothOpration=MyApplication._BluetoothOpration;
+		mBluetoothOpration= MainActivity._BluetoothOpration;
 		mBluetoothOpration.addBluetoothOprationCallback(BOcallback);
 		initView ();
 		getActionBar().setTitle("View all users");

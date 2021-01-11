@@ -19,6 +19,7 @@ import com.chronocloud.ryfibluetoothlibrary.BluetoothOpration;
 import com.chronocloud.ryfibluetoothlibrary.entity.TestDataInfo;
 import com.chronocloud.ryfibluetoothlibrary.entity.User;
 import com.chronocloud.ryfibluetoothlibrary.listener.BluetoothOprationCallback;
+import com.example.blue.MainActivity;
 import com.example.blue.R;
 import com.example.blue.ryfitdemo.entity.OperationData;
 import com.example.blue.ryfitdemo.entity.TestData;
@@ -70,6 +71,8 @@ public class DeviceControlActivity extends Activity {
 	private BluetoothOpration mBluetoothOpration = null;
 	public static BluetoothDevice mBluetoothDevice = null;
 
+	public static BluetoothOpration _BluetoothOpration;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -77,6 +80,7 @@ public class DeviceControlActivity extends Activity {
 		setContentView(R.layout.tizhi_gatt_services_characteristics);
 		context = this;
 		// Sets up UI references.
+		_BluetoothOpration=new BluetoothOpration(this);
 		initView();
 		initAction();
 	}
@@ -113,7 +117,9 @@ public class DeviceControlActivity extends Activity {
 		getActionBar().setTitle(mDeviceName);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		mBluetoothOpration = MyApplication._BluetoothOpration;
+		mBluetoothOpration = MainActivity._BluetoothOpration;
+
+
 		mBluetoothOpration.addBluetoothOprationCallback(BOcallback);
 	}
 

@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.chronocloud.ryfibluetoothlibrary.BluetoothOpration;
+import com.example.blue.MainActivity;
 import com.example.blue.R;
 import com.example.blue.ryfitdemo.entity.UserData;
 import com.example.blue.ryfitdemo.util.MyApplication;
@@ -57,7 +58,7 @@ public class UserInfoActivity extends Activity {
 	@SuppressWarnings("unchecked")
 	private void initData() {
 		// TODO Auto-generated method stub
-		mBluetoothOpration = MyApplication._BluetoothOpration;
+		mBluetoothOpration = MainActivity._BluetoothOpration;
 		map = (Map<String, String>) getIntent().getBundleExtra("bundle")
 				.getSerializable("map");
 		index = map.get(UserData.INDEX);
