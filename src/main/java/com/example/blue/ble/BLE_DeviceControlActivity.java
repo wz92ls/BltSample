@@ -64,7 +64,7 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
     // Code to manage Service lifecycle.
 
 
-    private MyServiceConnection serviceConnection;
+    private MyServiceConnection serviceConnection =null;
 //    private MQTTService mqttService;
     @Override
     public void setMessage(String message) {
@@ -385,10 +385,9 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
         super.onDestroy();
         //this.unregisterReceiver(mGattUpdateReceiver);
         //unbindService(mServiceConnection);
-
-        unbindService(serviceConnection);
-        super.onDestroy();
-
+        if(serviceConnection!=null) {
+            unbindService(serviceConnection);
+        }
         if(mBleBluetoothLeService != null)
         {
         	mBleBluetoothLeService.close();

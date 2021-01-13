@@ -99,9 +99,9 @@ public class HttpClient {
             String getreturn=new String(cha,0,len);
 
             String m_check=Parse_return2(getreturn,"check");
-           if(m_check!=null) {
-               https_check =m_check;
-           }
+            if(m_check!=null) {
+                https_check =m_check;
+            }
 
             Log.w(TAG,getreturn);
             Log.w(TAG,https_check);
@@ -197,8 +197,12 @@ public class HttpClient {
         {
             try {
                 JSONObject jsonObject = new JSONObject(instr);
-                jsonObject = jsonObject.getJSONObject("data");
-                return jsonObject.getString(key);
+                if(jsonObject.has("data")) {
+                    jsonObject = jsonObject.getJSONObject("data");
+                    return jsonObject.getString(key);
+                }else {
+                    return null;
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
