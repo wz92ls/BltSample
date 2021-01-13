@@ -1,5 +1,6 @@
 package com.example.blue.https;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 import org.json.JSONException;
@@ -26,24 +27,25 @@ public class HttpClient2 {
 
     private static String https_arg;
     private static String https_check;
-    private static String https_ticket="unHj2qeiMcH0JLyefFFJx2T6EyRKejukQJ2eCD3DXRHTWZz8Uj/KQ97LX3ApKJWX";
+    private static final String https_ticket="unHj2qeiMcH0JLyefFFJx2T6EyRKejukQJ2eCD3DXRHTWZz8Uj/KQ97LX3ApKJWX";
 
     public  class Https_gongyitech{
         public String Post_deviceSend() throws Exception{
-            Map<String,String> params=new HashMap<String,String>();;
+            Map<String,String> params= new HashMap<>();
             params.put("ticket",https_ticket);
             params.put("status","BF");
             InputStream inputStream= sendPOSTRequestForInputStream(HTTPS_DEVICESEND,params,"UTF-8");
             byte []cha = new byte[1024];
             int len = inputStream.read(cha);
             inputStream.close();
+            closeConnection();
             String getreturn=new String(cha,0,len);
             Log.w(TAG,getreturn);
             return Parse_return(getreturn,"msg");
         }
 
         public String Post_deviceReturn(String receive) throws Exception{
-            Map<String,String> params=new HashMap<String,String>();
+            Map<String,String> params=new HashMap<>();
             params.put("ticket",https_ticket);
             params.put("receive",receive);
             Log.w(TAG,receive);
@@ -52,6 +54,7 @@ public class HttpClient2 {
             byte []cha = new byte[1024];
             int len = inputStream.read(cha);
             inputStream.close();
+            closeConnection();
             String getreturn=new String(cha,0,len);
             Log.w(TAG,getreturn);
             https_arg=Parse_return(getreturn,"msg");
@@ -59,7 +62,7 @@ public class HttpClient2 {
         }
 
         public String Post_autotestingq(String type) throws Exception{
-            Map<String,String> params=new HashMap<String,String>();
+            Map<String,String> params=new HashMap<>();
             params.put("ticket",https_ticket);
             params.put("arg",https_arg);
             params.put("type",type);
@@ -67,6 +70,7 @@ public class HttpClient2 {
             byte []cha = new byte[1024];
             int len = inputStream.read(cha);
             inputStream.close();
+            closeConnection();
             String getreturn=new String(cha,0,len);
             Log.w(TAG,getreturn);
             https_check=Parse_return2(getreturn,"check");
@@ -74,7 +78,7 @@ public class HttpClient2 {
         }
 
         public String Post_correspond(String instruct) throws Exception{
-            Map<String,String> params=new HashMap<String,String>();
+            Map<String,String> params=new HashMap<>();
             params.put("ticket",https_ticket);
             params.put("arg",https_arg);
             params.put("check",https_check);
@@ -83,13 +87,12 @@ public class HttpClient2 {
             Log.w(TAG,https_check);
             Log.w(TAG,https_arg);
             Log.w(TAG,instruct);
-
             InputStream inputStream=sendPOSTRequestForInputStream(HTTPS_CORRESPOND,params,"UTF-8");
             byte []cha = new byte[1024];
             int len = inputStream.read(cha);
             inputStream.close();
+            closeConnection();
             String getreturn=new String(cha,0,len);
-
             String m_check=Parse_return2(getreturn,"check");
            if(m_check!=null) {
                https_check =m_check;
@@ -98,7 +101,7 @@ public class HttpClient2 {
             Log.w(TAG,getreturn);
             Log.w(TAG,m_check);
 
-            int code=Parse_getcode(getreturn,"code");
+            int code=Parse_getcode(getreturn);
             if(code==0) {
                 return "0_"+Parse_return2(getreturn, "value");
             }
@@ -130,7 +133,7 @@ public class HttpClient2 {
         }
 
         public String Post_deviceControl(String type,String stauts,String value) throws Exception{
-            Map<String,String> params=new HashMap<String,String>();
+            Map<String,String> params=new HashMap<>();
             params.put("ticket",https_ticket);
             params.put("arg",https_arg);
             params.put("type",type);
@@ -140,13 +143,14 @@ public class HttpClient2 {
             byte []cha = new byte[1024];
             int len = inputStream.read(cha);
             inputStream.close();
+            closeConnection();
             String getreturn=new String(cha,0,len);
             Log.w(TAG,getreturn);
             return Parse_return(getreturn,"msg");
         }
 
         public String Post_testingr(String receive) throws Exception{
-            Map<String,String> params=new HashMap<String,String>();
+            Map<String,String> params=new HashMap<>();
             params.put("ticket",https_ticket);
             params.put("arg",https_arg);
             params.put("receive",receive);
@@ -154,6 +158,7 @@ public class HttpClient2 {
             byte []cha = new byte[1024];
             int len = inputStream.read(cha);
             inputStream.close();
+            closeConnection();
             String getreturn=new String(cha,0,len);
             Log.w(TAG,getreturn);
             return Parse_return(getreturn,"msg");
@@ -163,19 +168,17 @@ public class HttpClient2 {
         {
             try {
                 JSONObject jsonObject = new JSONObject(instr);
-                String value = jsonObject.getString(key);
-                return value;
+                return jsonObject.getString(key);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             return null;
         }
-        private int Parse_getcode(String instr,String key)
+        private int Parse_getcode(String instr)
         {
             try {
                 JSONObject jsonObject = new JSONObject(instr);
-                int code = jsonObject.getInt(key);
-                return code;
+                return jsonObject.getInt("code");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -186,8 +189,7 @@ public class HttpClient2 {
             try {
                 JSONObject jsonObject = new JSONObject(instr);
                 jsonObject = jsonObject.getJSONObject("data");
-                String value = jsonObject.getString(key);
-                return value;
+                return jsonObject.getString(key);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -195,21 +197,24 @@ public class HttpClient2 {
         }
 
     }
+    @SuppressLint("AllowAllHostnameVerifier")
     private static final AllowAllHostnameVerifier HOSTNAME_VERIFIER = new AllowAllHostnameVerifier ();
-    private static X509TrustManager xtm = new X509TrustManager() {
+    private static final X509TrustManager xtm = new X509TrustManager() {
+        @SuppressLint("TrustAllX509TrustManager")
         public void checkClientTrusted(X509Certificate[] chain, String authType) {}
+        @SuppressLint("TrustAllX509TrustManager")
         public void checkServerTrusted(X509Certificate[] chain, String authType) {
         }
         public X509Certificate[] getAcceptedIssuers() {
             return null;
         }
     };
-    private static X509TrustManager[] xtmArray = new X509TrustManager[] { xtm };
+    private static final X509TrustManager[] xtmArray = new X509TrustManager[] { xtm };
     private static HttpsURLConnection conn=null;
     public InputStream sendPOSTRequestForInputStream(String path, Map<String, String> params, String encoding) throws Exception{
 // 1> 组拼实体数据
 //method=save&name=liming&timelength=100
-        StringBuilder entityBuilder = new StringBuilder("");
+        StringBuilder entityBuilder = new StringBuilder();
         if(params!=null && !params.isEmpty()){
             for(Map.Entry<String, String> entry : params.entrySet()){
                 entityBuilder.append(entry.getKey()).append('=');
@@ -221,14 +226,15 @@ public class HttpClient2 {
         byte[] entity = entityBuilder.toString().getBytes();
         URL url = new URL(path);
         conn = (HttpsURLConnection) url.openConnection();
-        if (conn instanceof HttpsURLConnection) {
+        if (conn != null) {
             // Trust all certificates
             SSLContext context = SSLContext.getInstance("TLS");
             context.init(new KeyManager[0], xtmArray, new SecureRandom());
             SSLSocketFactory socketFactory = context.getSocketFactory();
-            ((HttpsURLConnection) conn).setSSLSocketFactory(socketFactory);
-            ((HttpsURLConnection) conn).setHostnameVerifier(HOSTNAME_VERIFIER);
+            conn.setSSLSocketFactory(socketFactory);
+            conn.setHostnameVerifier(HOSTNAME_VERIFIER);
         }
+        assert conn != null;
         conn.setConnectTimeout(5 * 1000);
         conn.setRequestMethod("POST");
         conn.setDoOutput(true);//允许输出数据

@@ -29,9 +29,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import com.example.blue.MQTTService;
+import com.example.blue.MyServiceConnection;
 import com.example.blue.R;
 import com.example.blue.https.HttpClient;
-import com.example.blue.https.HttpClient2;
+
+import java.util.Objects;
 
 
 /**
@@ -40,14 +43,14 @@ import com.example.blue.https.HttpClient2;
  * communicates with {@code BluetoothLeService}, which in turn interacts with the
  * Bluetooth LE API.
  */
-public class BLE_DeviceControlActivity extends Activity {
+public class BLE_DeviceControlActivity extends Activity implements MQTTService.IGetMessageCallBack {
     private final static String TAG = BLE_DeviceControlActivity.class.getSimpleName();
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
 
     private TextView mDataField, http_result;
-    private String mDeviceName;
+//    private String mDeviceName;
     private String mDeviceAddress;
     private BLE_BluetoothLeService mBleBluetoothLeService;
     private boolean mConnected = false;
@@ -57,6 +60,34 @@ public class BLE_DeviceControlActivity extends Activity {
 	ScrollView svResult ,svResult2;
 	Button btnSend,btndeviceSend,mt_shengyinkai,mt_shengyinguan,mt_deviceControl1,mt_deviceControl2,mt_deviceControl3,mt_deviceControl4;
     // Code to manage Service lifecycle.
+
+
+    private MyServiceConnection serviceConnection;
+//    private MQTTService mqttService;
+    @Override
+    public void setMessage(String message) {
+        MQTTService mqttService = serviceConnection.getMqttService();
+        mqttService.toCreateNotification(message);
+    }
+//    Handler handler = new Handler() {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            Object model = (Object) msg.obj;
+//            http_result.append(model + "\n");
+//            svResult2.fullScroll(ScrollView.FOCUS_DOWN);
+//        }
+//    };
+
+    final private Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            Object model = msg.obj;
+            http_result.append(model + "\n");
+            svResult2.fullScroll(ScrollView.FOCUS_DOWN);
+            return false;
+        }
+    });
+
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
         @Override
@@ -133,7 +164,7 @@ public class BLE_DeviceControlActivity extends Activity {
                     return;
                 }
                 oldbyteArray=byteArray;
-                if(strcmd=="deviceSend"&&byteArray[0]!=13)
+                if(strcmd.equals("deviceSend")&&byteArray[0]!=13)
                 {
                     new Thread(new Runnable(){
                         @Override
@@ -151,7 +182,7 @@ public class BLE_DeviceControlActivity extends Activity {
                         }
                     }).start();
                 }
-                if(strcmd=="mt_shengyinkai"&&byteArray[0]!=13)
+                if(strcmd.equals("mt_shengyinkai")&&byteArray[0]!=13)
                 {
                     new Thread(new Runnable(){
                         @Override
@@ -170,7 +201,7 @@ public class BLE_DeviceControlActivity extends Activity {
                         }
                     }).start();
                 }
-                if(strcmd=="mt_shengyinguan"&&byteArray[0]!=13)
+                if(strcmd.equals("mt_shengyinguan")&&byteArray[0]!=13)
                 {
                     new Thread(new Runnable(){
                         @Override
@@ -189,7 +220,7 @@ public class BLE_DeviceControlActivity extends Activity {
                         }
                     }).start();
                 }
-                if(strcmd=="mt_deviceControl"&&byteArray[0]!=13)
+                if(strcmd.equals("mt_deviceControl")&&byteArray[0]!=13)
                 {
                     new Thread(new Runnable(){
                         @Override
@@ -199,10 +230,10 @@ public class BLE_DeviceControlActivity extends Activity {
 //                                HttpClient2.Https_gongyitech hs=h2.new Https_gongyitech();
 //                                String result=hs.Post_correspond(hexBytes2Str(byteArray));
 
-                                String result= HttpClient.Https_gongyitech.Post_testingr(hexBytes2Str(byteArray));
+                                String result= HttpClient.Https_gongyitech.Post_correspond(hexBytes2Str(byteArray));
                                 strcmd="mt_deviceControl";
                                 Log.w(TAG,result);
-                                if(result!="error")
+                                if(!result.equals("error"))
                                 {
                                     String[] bufsrc=result.split("[_]");
                                     Log.w(TAG,bufsrc[0]);
@@ -223,28 +254,19 @@ public class BLE_DeviceControlActivity extends Activity {
                         }
                     }).start();
                 }
+                if (mDataField.length() > 500)
+                    mDataField.setText("");
+                mDataField.append(hexBytes2Str(byteArray)+"\n");
+                svResult.post(new Runnable() {
+                    public void run() {
+                        svResult.fullScroll(ScrollView.FOCUS_DOWN);
+                    }
+                });
 
-            	if (byteArray != null) {
-                	if (mDataField.length() > 500)
-                		mDataField.setText("");
-                        mDataField.append(hexBytes2Str(byteArray)+"\n");
-                        svResult.post(new Runnable() {
-            			public void run() {
-            				svResult.fullScroll(ScrollView.FOCUS_DOWN);
-            			}
-            		});
-                }
             }
         }
     };
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Object model = (Object) msg.obj;
-            http_result.append(model+"\n");
-            svResult2.fullScroll(ScrollView.FOCUS_DOWN);
-        }
-    };
+
     private void clearUI() {
         mDataField.setText(R.string.no_data);
     }
@@ -254,8 +276,13 @@ public class BLE_DeviceControlActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ble_gatt_services_characteristics);
 
+        serviceConnection = new MyServiceConnection();
+        serviceConnection.setIGetMessageCallBack(BLE_DeviceControlActivity.this);
+        Intent intent2 = new Intent(this, MQTTService.class);
+        bindService(intent2, serviceConnection, Context.BIND_AUTO_CREATE);
+
         final Intent intent = getIntent();
-        mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
+        String mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
         // Sets up UI references.
@@ -299,7 +326,7 @@ public class BLE_DeviceControlActivity extends Activity {
         mt_deviceControl4.setEnabled(false);
 
 
-        getActionBar().setTitle(mDeviceName);
+        Objects.requireNonNull(getActionBar()).setTitle(mDeviceName);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         Intent gattServiceIntent = new Intent(BLE_DeviceControlActivity.this, BLE_BluetoothLeService.class);
 
@@ -330,6 +357,10 @@ public class BLE_DeviceControlActivity extends Activity {
         super.onDestroy();
         //this.unregisterReceiver(mGattUpdateReceiver);
         //unbindService(mServiceConnection);
+
+        unbindService(serviceConnection);
+        super.onDestroy();
+
         if(mBleBluetoothLeService != null)
         {
         	mBleBluetoothLeService.close();
@@ -392,7 +423,8 @@ public class BLE_DeviceControlActivity extends Activity {
 				mBleBluetoothLeService.WriteValue(edtSend.getText().toString());
 				
 				InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				if(imm.isActive())
+                assert imm != null;
+                if(imm.isActive())
 					imm.hideSoftInputFromWindow(edtSend.getWindowToken(), 0);
 				//todo Send data
 			}
@@ -539,7 +571,7 @@ public class BLE_DeviceControlActivity extends Activity {
         {
             String[] bufsrc2=bufsrc[i].split("[:]");
             String str=bufsrc2[1];
-            if(bufsrc2[1].indexOf("}")!=-1) {
+            if(bufsrc2[1].contains("}")) {
                  str = bufsrc2[1].substring(0, bufsrc2[1].indexOf("}"));
             }
             int tt= Integer.parseInt(str);
@@ -563,17 +595,15 @@ public class BLE_DeviceControlActivity extends Activity {
     }
     private static String hexBytes2Str(byte[] src)
     {
-        String ret="";
-        int l=src.length;
-        for (int i = 0; i < l; i++)
-        {
-            int tt= src[i]&0xFF;
-            if(ret!="")
-                ret=ret+","+Integer.toString(tt);
+        StringBuilder ret= new StringBuilder();
+        for (byte b : src) {
+            int tt = b & 0xFF;
+            if (!ret.toString().equals(""))
+                ret.append(",").append(tt);
             else
-                ret=Integer.toString(tt);
+                ret = new StringBuilder(Integer.toString(tt));
         }
-        return ret;
+        return ret.toString();
     }
     private static IntentFilter makeGattUpdateIntentFilter() {                        //注册接收的事件
         final IntentFilter intentFilter = new IntentFilter();

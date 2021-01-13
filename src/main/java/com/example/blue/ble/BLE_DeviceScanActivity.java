@@ -17,7 +17,6 @@
 package com.example.blue.ble;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -31,7 +30,6 @@ import android.view.*;
 import android.widget.*;
 import com.example.blue.R;
 import com.example.blue.ryfitdemo.DeviceControlActivity;
-import com.example.blue.ryfitdemo.tizhi_MainActivity;
 
 import java.util.ArrayList;
 
@@ -88,6 +86,7 @@ public class BLE_DeviceScanActivity extends Activity {
         // BluetoothAdapter through BluetoothManager.
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        assert bluetoothManager != null;
         mBluetoothAdapter = bluetoothManager.getAdapter();
 
         // Checks if Bluetooth is supported on the device.
@@ -101,7 +100,6 @@ public class BLE_DeviceScanActivity extends Activity {
         mLeDeviceListAdapter = new LeDeviceListAdapter();
         lv.setAdapter(mLeDeviceListAdapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @SuppressWarnings("unchecked")
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {

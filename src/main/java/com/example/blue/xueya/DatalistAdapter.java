@@ -18,17 +18,14 @@ import java.util.ArrayList;
  */
 
 public class DatalistAdapter extends BaseAdapter {
-    private ArrayList<SycnData> mLeDevices;
-    private LayoutInflater mInflator;
-    private Activity mContext;
-
+    private final ArrayList<SycnData> mLeDevices;
+    private final LayoutInflater mInflator;
 
 
     public DatalistAdapter(Activity c ,ArrayList<SycnData> showDevice) {
         super();
-        mContext = c;
         mLeDevices = showDevice;
-        mInflator = mContext.getLayoutInflater();
+        mInflator = c.getLayoutInflater();
     }
     @Override
     public int getCount() {
@@ -48,9 +45,9 @@ public class DatalistAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
         if (convertView==null){
-            viewHolder=new ViewHolder();
+            viewHolder= new ViewHolder();
             convertView=mInflator.inflate(R.layout.xueya_data_list,null);
             viewHolder.tempid= (TextView) convertView.findViewById(R.id.temp_id);
             viewHolder.temp=(TextView) convertView.findViewById(R.id.temp_sycn_value);
@@ -67,7 +64,7 @@ public class DatalistAdapter extends BaseAdapter {
         return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         TextView tempid;
         TextView temp;
     }

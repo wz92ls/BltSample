@@ -23,7 +23,7 @@ import com.example.blue.MainActivity;
 import com.example.blue.R;
 import com.example.blue.ryfitdemo.entity.OperationData;
 import com.example.blue.ryfitdemo.entity.TestData;
-import com.example.blue.ryfitdemo.util.MyApplication;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -46,7 +46,6 @@ public class DeviceControlActivity extends Activity {
 	public static final String NO = "no";
 	public static final String ORDER = "order";
 	public static final String NAME = "name";
-	private String mDeviceName;
 	// private String mDeviceAddress;
 	private boolean mConnected = false;
 	private ListView lvData;
@@ -112,7 +111,7 @@ public class DeviceControlActivity extends Activity {
 				new int[] { android.R.id.text1 });
 		lvData.setAdapter(adapter);
 		final Intent intent = getIntent();
-		mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
+		String mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
 		// mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 		getActionBar().setTitle(mDeviceName);
 		getActionBar().setDisplayHomeAsUpEnabled(true);

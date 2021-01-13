@@ -24,10 +24,14 @@ android {
         flatDir {
             dirs 'libs'
         }
+        maven {
+            url "https://repo.eclipse.org/content/repositories/paho-releases/"
+        }
     }
     }
 
 dependencies {
+    implementation 'org.jetbrains:annotations-java5:20.1.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -37,6 +41,8 @@ dependencies {
     compile (name:'bluetoothlibrary-release',ext:'aar')
     compile 'com.ashokvarma.android:bottom-navigation-bar:2.0.2'
     compile files('libs/RyFitBluetoothLibrary_1.4.jar')
+    compile 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    compile 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1'
 }
 buildscript {
 

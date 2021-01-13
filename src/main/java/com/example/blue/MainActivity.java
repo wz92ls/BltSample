@@ -1,6 +1,7 @@
 package com.example.blue;
 
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,12 +9,15 @@ import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
 import com.chronocloud.ryfibluetoothlibrary.BluetoothOpration;
+import com.example.blue.ble.BLE_DeviceControlActivity;
 import com.example.blue.https.HttpClient;
 import com.example.blue.ryfitdemo.tizhi_MainActivity;
 import com.example.blue.ble.BLE_DeviceScanActivity;
 import com.example.blue.xueya.DeviceScanActivity;
 
-public class MainActivity extends TabActivity implements View.OnClickListener{
+import java.io.UnsupportedEncodingException;
+
+public class MainActivity extends TabActivity implements View.OnClickListener,MQTTService.IGetMessageCallBack{
 
     public static BluetoothOpration _BluetoothOpration;
 
@@ -24,6 +28,22 @@ public class MainActivity extends TabActivity implements View.OnClickListener{
     private TextView tv2;
     private TextView tv3;
     private String titel="";;
+
+    private MyServiceConnection serviceConnection;
+    private MQTTService mqttService;
+    @Override
+    public void setMessage(String message) {
+        mqttService = serviceConnection.getMqttService();
+//        String msg="";
+//        try {
+//             msg = new String(message.getBytes(), "");
+//        }catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
+        Log.d(TAG,message);
+        mqttService.toCreateNotification(message);
+    }
+
     @Override
     public void onLowMemory() {
         super.onLowMemory();
@@ -46,6 +66,15 @@ public class MainActivity extends TabActivity implements View.OnClickListener{
 
         _BluetoothOpration=new BluetoothOpration(this);
         setContentView(R.layout.activity_main);
+
+//        serviceConnection = new MyServiceConnection();
+//        serviceConnection.setIGetMessageCallBack(MainActivity.this);
+//        Intent intent2 = new Intent(this, MQTTService.class);
+//        bindService(intent2, serviceConnection, Context.BIND_AUTO_CREATE);
+
+
+
+
         titel=getString(R.string.app_name)+"-"+getString(R.string.xueya);
         getActionBar().setTitle(titel);
         tv1 = (TextView)findViewById(R.id.tv1);
@@ -75,6 +104,7 @@ public class MainActivity extends TabActivity implements View.OnClickListener{
                 tabHost.setCurrentTabByTag("tv1");
                 titel = getString(R.string.app_name)+"-"+getString(R.string.xueya);
                 getActionBar().setTitle(titel);
+                MQTTService.publish("测试一下子");
 //                tizhi_MainActivity.messageCallback.onMessage("stop");
                 break;
             case R.id.tv2:
