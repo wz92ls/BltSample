@@ -33,6 +33,7 @@ import com.example.blue.MQTTService;
 import com.example.blue.MyServiceConnection;
 import com.example.blue.R;
 import com.example.blue.https.HttpClient;
+import com.example.blue.https.HttpClient2;
 
 import java.util.Objects;
 
@@ -59,6 +60,7 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
     EditText edtSend;
 	ScrollView svResult ,svResult2;
 	Button btnSend,btndeviceSend,mt_shengyinkai,mt_shengyinguan,mt_deviceControl1,mt_deviceControl2,mt_deviceControl3,mt_deviceControl4;
+    Button mt_gaikai,mt_gaiguan;
     // Code to manage Service lifecycle.
 
 
@@ -130,6 +132,10 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                 mt_shengyinguan.setEnabled(false);
                 btndeviceSend.setEnabled(false);
 
+                mt_gaikai.setEnabled(false);
+                mt_gaiguan.setEnabled(false);
+
+
                 mt_deviceControl1.setEnabled(false);
                 mt_deviceControl2.setEnabled(false);
                 mt_deviceControl3.setEnabled(false);
@@ -150,6 +156,9 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                 mt_deviceControl2.setEnabled(true);
                 mt_deviceControl3.setEnabled(true);
                 mt_deviceControl4.setEnabled(true);
+
+                mt_gaikai.setEnabled(true);
+                mt_gaiguan.setEnabled(true);
 
             	Log.e(TAG, "In what we need");
             	invalidateOptionsMenu();
@@ -182,7 +191,7 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                         }
                     }).start();
                 }
-                if(strcmd.equals("mt_shengyinkai")&&byteArray[0]!=13)
+                if(strcmd.equals("mt_control")&&byteArray[0]!=13)
                 {
                     new Thread(new Runnable(){
                         @Override
@@ -194,25 +203,6 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                                 strcmd="None";
                                 Message message = handler.obtainMessage(22, result);
                                 handler.sendMessage(message);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                strcmd="None";
-                            }
-                        }
-                    }).start();
-                }
-                if(strcmd.equals("mt_shengyinguan")&&byteArray[0]!=13)
-                {
-                    new Thread(new Runnable(){
-                        @Override
-                        public void run() {
-                            try {
-                                String result= HttpClient.Https_gongyitech.Post_testingr(hexBytes2Str(byteArray));
-                                strcmd="None";
-                                Log.w(TAG,result);
-                                Message message = handler.obtainMessage(22, result);
-                                handler.sendMessage(message);
-
                             } catch (Exception e) {
                                 e.printStackTrace();
                                 strcmd="None";
@@ -222,20 +212,26 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                 }
                 if(strcmd.equals("mt_deviceControl")&&byteArray[0]!=13)
                 {
+                    if(byteArray[2]==12)
+                    {
+                        return;
+                    }
+                    if(byteArray[2]==10)
+                    {
+                        return;
+                    }
                     new Thread(new Runnable(){
                         @Override
                         public void run() {
                             try {
-//                                HttpClient2 h2 = new HttpClient2();
-//                                HttpClient2.Https_gongyitech hs=h2.new Https_gongyitech();
-//                                String result=hs.Post_correspond(hexBytes2Str(byteArray));
 
                                 String result= HttpClient.Https_gongyitech.Post_correspond(hexBytes2Str(byteArray));
                                 strcmd="mt_deviceControl";
                                 Log.w(TAG,result);
+                                String[] bufsrc =new String[2];
                                 if(!result.equals("error"))
                                 {
-                                    String[] bufsrc=result.split("[_]");
+                                    bufsrc=result.split("[_]");
                                     Log.w(TAG,bufsrc[0]);
                                     if(bufsrc[0].equals("0"))
                                     {
@@ -244,7 +240,30 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                                         mBleBluetoothLeService.WriteValue(ret);
                                     }
                                 }
-
+                                if(bufsrc[0].equals("0"))
+                                {
+                                    result="发送:"+bufsrc[1];
+                                }
+                                if(bufsrc[0].equals("1"))
+                                {
+                                    result="等待完成";
+                                }
+                                if(bufsrc[0].equals("2"))
+                                {
+                                    result="完成"+bufsrc[1];
+                                }
+                                if(bufsrc[0].equals("3"))
+                                {
+                                    result="需进行清洗，重新启动";
+                                }
+                                if(bufsrc[0].equals("4"))
+                                {
+                                    result="设备正在清洗，等清洗完成后再检测";
+                                }
+                                if(bufsrc[0].equals("5"))
+                                {
+                                    result="需复位后，重新启动";
+                                }
                                 Message message = handler.obtainMessage(22, result);
                                 handler.sendMessage(message);
                             } catch (Exception e) {
@@ -276,10 +295,10 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ble_gatt_services_characteristics);
 
-        serviceConnection = new MyServiceConnection();
-        serviceConnection.setIGetMessageCallBack(BLE_DeviceControlActivity.this);
-        Intent intent2 = new Intent(this, MQTTService.class);
-        bindService(intent2, serviceConnection, Context.BIND_AUTO_CREATE);
+//        serviceConnection = new MyServiceConnection();
+//        serviceConnection.setIGetMessageCallBack(BLE_DeviceControlActivity.this);
+//        Intent intent2 = new Intent(this, MQTTService.class);
+//        bindService(intent2, serviceConnection, Context.BIND_AUTO_CREATE);
 
         final Intent intent = getIntent();
         String mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
@@ -308,6 +327,15 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
         mt_shengyinguan=(Button) this.findViewById(R.id.mt_shengyinguan);
         mt_shengyinguan.setOnClickListener(new ClickEvent());
         mt_shengyinguan.setEnabled(false);
+
+        mt_gaikai=(Button) this.findViewById(R.id.mt_gaikai);
+        mt_gaiguan=(Button) this.findViewById(R.id.mt_gaiguan);
+
+        mt_gaikai.setOnClickListener(new ClickEvent());
+        mt_gaiguan.setOnClickListener(new ClickEvent());
+
+        mt_gaikai.setEnabled(false);
+        mt_gaiguan.setEnabled(false);
 
 
         mt_deviceControl1=(Button) this.findViewById(R.id.deviceControl1);
@@ -458,7 +486,7 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                             Log.w(TAG,result);
                             byte[] ret= hexStr2Bytes2(result);
                             mBleBluetoothLeService.WriteValue(ret);
-                            strcmd="mt_shengyinkai";
+                            strcmd="mt_control";
                         } catch (Exception e) {
                             e.printStackTrace();
                             strcmd="None";
@@ -479,7 +507,7 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                             Log.w(TAG,result);
                             byte[] ret= hexStr2Bytes2(result);
                             mBleBluetoothLeService.WriteValue(ret);
-                            strcmd="mt_shengyinguan";
+                            strcmd="mt_control";
                         } catch (Exception e) {
                             e.printStackTrace();
                             strcmd="None";
@@ -487,6 +515,51 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
                     }
                 }).start();
             }
+            if (v == mt_gaikai) {
+                new Thread(new Runnable(){
+                    @Override
+                    public void run() {
+                        try {
+                            String type="3";
+                            String stauts="10";
+                            //除臭 水温 水压 喷嘴 风温 座温 节电 静音 夜灯 按摩 自动冲水 关闭盖圈 翻盖、翻圈 翻盖 冲大便 冲小便 智能翻盖翻圈
+                            String value="0,0,1,1,0,0,0,0,1,0,0,0,1,0,0,0,0";
+                            String result=HttpClient.Https_gongyitech.Post_deviceControl(type,stauts,value);
+                            Log.w(TAG,result);
+                            byte[] ret= hexStr2Bytes2(result);
+                            mBleBluetoothLeService.WriteValue(ret);
+                            strcmd="mt_control";
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            strcmd="None";
+                        }
+                    }
+                }).start();
+
+            }
+            if (v == mt_gaiguan) {
+
+                new Thread(new Runnable(){
+                    @Override
+                    public void run() {
+                        try {
+                            String type="3";
+                            String stauts="10";
+                            //除臭 水温 水压 喷嘴 风温 座温 节电 静音 夜灯 按摩 自动冲水 关闭盖圈 翻盖、翻圈 翻盖 冲大便 冲小便 智能翻盖翻圈
+                            String value="0,0,1,1,0,0,0,0,1,0,0,1,0,0,0,0,0";
+                            String result=HttpClient.Https_gongyitech.Post_deviceControl(type,stauts,value);
+                            Log.w(TAG,result);
+                            byte[] ret= hexStr2Bytes2(result);
+                            mBleBluetoothLeService.WriteValue(ret);
+                            strcmd="mt_control";
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            strcmd="None";
+                        }
+                    }
+                }).start();
+            }
+
             if(v == mt_deviceControl1){
                 new Thread(new Runnable(){
                     @Override

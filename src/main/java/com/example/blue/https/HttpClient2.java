@@ -25,11 +25,12 @@ public class HttpClient2 {
     private  final static String HTTPS_DEVICECONTROL="https://openbfapi.gongyitech.com/urine/deviceControl";
     private  final static String HTTPS_TESTINGR="https://openbfapi.gongyitech.com/urine/testingr";
 
-    private static String https_arg;
-    private static String https_check;
-    private static final String https_ticket="unHj2qeiMcH0JLyefFFJx2T6EyRKejukQJ2eCD3DXRHTWZz8Uj/KQ97LX3ApKJWX";
+    public static String https_arg;
+    public static String https_check;
 
     public  class Https_gongyitech{
+
+        private static final String https_ticket="unHj2qeiMcH0JLyefFFJx2T6EyRKejukQJ2eCD3DXRHTWZz8Uj/KQ97LX3ApKJWX";
         public String Post_deviceSend() throws Exception{
             Map<String,String> params= new HashMap<>();
             params.put("ticket",https_ticket);

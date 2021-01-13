@@ -49,6 +49,21 @@
 					android:text="声音关"
 					android:textSize="20sp"
 			/>
+			<Button
+					android:id="@+id/mt_gaikai"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:gravity="right"
+					android:text="翻盖"
+					android:textSize="20sp"
+			/><Button
+				android:id="@+id/mt_gaiguan"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="right"
+				android:text="关盖"
+				android:textSize="20sp"
+		/>
 		</LinearLayout>
 		<LinearLayout
 			android:layout_width="wrap_content"

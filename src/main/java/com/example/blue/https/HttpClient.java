@@ -24,8 +24,8 @@ public class HttpClient {
     public static class Https_gongyitech{
         private final static String TAG = Https_gongyitech.class.getSimpleName();
 
-        static private String https_arg;
-        static private String https_check;
+        static public String https_arg;
+        static public String https_check;
         static private final String https_ticket="unHj2qeiMcH0JLyefFFJx2T6EyRKejukQJ2eCD3DXRHTWZz8Uj/KQ97LX3ApKJWX";
 
         public static  String Post_deviceSend() throws Exception{
@@ -104,9 +104,10 @@ public class HttpClient {
            }
 
             Log.w(TAG,getreturn);
-            Log.w(TAG,m_check);
+            Log.w(TAG,https_check);
 
             int code=Parse_getcode(getreturn);
+            Log.w(TAG,"code="+code);
             if(code==0) {
                 return "0_"+Parse_return2(getreturn, "value");
             }
