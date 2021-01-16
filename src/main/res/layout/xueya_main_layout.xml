@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        >
+              android:orientation="vertical" android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+    >
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
             <Button
                     android:id="@+id/scan"
                     android:layout_width="wrap_content"
@@ -28,16 +28,16 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/buttonblue"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@drawable/buttonfont"
                     android:text="停止"
                     android:minWidth="100dp"
             />
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
             <TextView
                     android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
@@ -47,12 +47,356 @@
                     android:minWidth="100dp"
             />
             <TextView
-                android:id="@+id/version"
+                    android:id="@+id/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="0.0"/>
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="电池电量:"
+                    android:minWidth="100dp"
+            />
+            <TextView
+                    android:id="@+id/bettray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="0"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="蓝牙时间:"
+            />
+            <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="0000-00-00 00:00:00"/>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="错误信息:"
+            />
+            <TextView
+                    android:id="@+id/error"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="0"/>
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="用户:"
+            />
+            <TextView
+                    android:id="@+id/user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="无"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="蓝牙连接状态:"
+            />
+            <TextView
+                    android:id="@+id/blt_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="未连接"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="同步的总的数据:"
+            />
+            <TextView
+                    android:id="@+id/total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="0"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="工作状态:"
+            />
+            <TextView
+                    android:id="@+id/wbpmode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="0"/>
+            <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="工作模式:"
+            />
+            <TextView
+                    android:id="@+id/work_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="000"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="软件版本:"
+            />
+            <TextView
+                    android:id="@+id/softwarevervion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text=""/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+            <Button
+                    android:id="@+id/wbp_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开始测量"
+                    android:background="@drawable/buttonblue"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@drawable/buttonfont"
+                    android:minWidth="100dp"
+            />
+            <Button
+                    android:id="@+id/sycn_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="同步时间"
+                    android:background="@drawable/buttonblue"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@drawable/buttonfont"
+                    android:minWidth="100dp"
+            />
+            <Button
+                    android:id="@+id/user_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="切换用户"
+                    android:background="@drawable/buttonblue"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@drawable/buttonfont"
+                    android:minWidth="100dp"
+            />
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+
+            <Button
+                    android:visibility="gone"
+                    android:id="@+id/set_voice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="设置音量"
+                    android:background="@drawable/buttonblue"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@drawable/buttonfont"
+                    android:minWidth="100dp"
+            />
+
+            <TextView
+                    android:visibility="gone"
+                    android:id="@+id/voice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="0"/>
+        </LinearLayout>
+
+
+        <TextView
+                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="" />
-            <Button
+                android:text="设备列表:"
+        />
+        <ListView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/devive_list"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:minHeight="50dp"
+        >
+        </ListView>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+        >
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="袖带压:"
+            />
+            <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/bp_mesure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="待测"
+            >
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/wbp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+        >
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+            >
+                <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="收缩压:"
+                />
+                <TextView
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/sys_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="待测"
+                />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+            >
+                <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="舒张压:"
+                />
+                <TextView
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/dia_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="待测"
+                />
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+            >
+                <TextView
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="心率:"
+                />
+                <TextView
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/hr_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="待测"
+                />
+            </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--            >-->
+<!--                <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@string/isguestmode"-->
+<!--                />-->
+<!--                <TextView-->
+<!--                        android:id="@+id/isguestmode_id"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="20sp"-->
+<!--                />-->
+<!--            </LinearLayout>-->
+        </LinearLayout>
+        <Button
                 android:id="@+id/sycn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,479 +406,198 @@
                 android:layout_marginLeft="5dp"
                 android:textColor="@drawable/buttonfont"
                 android:minWidth="100dp"
-                />
-            <Button
-                android:id="@+id/sycn_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="同步时间"
-                android:background="@drawable/buttonblue"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@drawable/buttonfont"
-                android:minWidth="100dp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="电池电量:"
-                    android:minWidth="100dp"
-                />
-            <TextView
-                android:id="@+id/bettray"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="蓝牙时间:"
-                />
-            <TextView
-                android:id="@+id/time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="错误信息:"
-                />
-            <TextView
-                android:id="@+id/error"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="" />
-            <Button
-                android:id="@+id/user_send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下发"
-                android:background="@drawable/buttonblue"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@drawable/buttonfont"
-                android:minWidth="100dp"
-                />
-            <TextView
-                android:id="@+id/user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="" />
-        </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="蓝牙连接状态:"
-            />
-        <TextView
-            android:id="@+id/blt_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="" />
-
-        <Button
-            android:id="@+id/wbp_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="开始测量"
-            android:background="@drawable/buttonblue"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="@drawable/buttonfont"
-            android:minWidth="100dp"
-            />
-
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="同步的总的数据:"
-                />
-            <TextView
-                android:id="@+id/total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="" />
-
-            <Button
-                android:id="@+id/set_voice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="设置音量"
-                android:background="@drawable/buttonblue"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="@drawable/buttonfont"
-                android:minWidth="100dp"
-                />
-
-            <TextView
-                android:id="@+id/voice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="" />
-
-        </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="工作状态:"
-            />p
-        <TextView
-            android:id="@+id/wbpmode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="工作模式:"
-            />
-        <TextView
-            android:id="@+id/work_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginLeft="40dp"
-            android:text="软件版本:"
-            />
-        <TextView
-            android:id="@+id/softwarevervion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="" />
-    </LinearLayout>
-    </LinearLayout>
-<ListView
-    android:id="@+id/devive_list"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-</ListView>
-<ListView
-        android:id="@+id/datas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-    >
-</ListView>
-<LinearLayout
-    android:id="@+id/temp_layout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/temp"
-            />
-        <TextView
-            android:id="@+id/temp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-           />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:textSize="20sp"
-            android:text="@string/temp_blan"
-            />
-        <TextView
-            android:id="@+id/temp_blan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            >
-        </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:textSize="20sp"
-            android:text="@string/wf"
-            />
-        <TextView
-            android:id="@+id/wf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            />
-    </LinearLayout>
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="@string/wbp"
         />
-    <TextView
-        android:id="@+id/bp_mesure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
+        <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="历史数据:"
+        />
+        <ListView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/datas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minHeight="100dp"
         >
-    </TextView>
-</LinearLayout>
+        </ListView>
 
-</LinearLayout>
-<LinearLayout
-       android:id="@+id/oxi"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:gravity="center_horizontal"
-       android:orientation="horizontal"
-       >
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:layout_gravity="center_vertical"
-           >
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/spo2"
-               />
-           <TextView
-               android:id="@+id/spo2"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="20sp"
-               />
-       </LinearLayout>
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:layout_gravity="center_vertical"
-           >
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/heart_rate"
-               />
-           <TextView
-               android:id="@+id/heart_rate"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="20sp"
-               />
-       </LinearLayout>
-      <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_weight="1"
-          android:layout_gravity="center_vertical"
-          >
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="@string/pi"
-              />
-          <TextView
-              android:id="@+id/pi"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textSize="20sp"
-              />
-      </LinearLayout>
-       <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_weight="1"
-           android:layout_gravity="center_vertical"
-           >
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="@string/resvalue"
-               />
-           <TextView
-               android:id="@+id/resvalue"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:textSize="20sp"
-               />
-       </LinearLayout>
-</LinearLayout>
-<LinearLayout
-        android:id="@+id/wbp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sys"
-                />
-            <TextView
-                android:id="@+id/sys_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dia"
-                />
-            <TextView
-                android:id="@+id/dia_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hr"
-                />
-            <TextView
-                android:id="@+id/hr_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/isguestmode"
-                />
-            <TextView
-                android:id="@+id/isguestmode_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                />
-        </LinearLayout>
+
+
     </LinearLayout>
-<FrameLayout
-        android:id="@+id/oxi_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:layout_marginBottom="80dp"
-        android:background="@color/backgroundDark">
+    <FrameLayout
+            android:id="@+id/oxi_chart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_marginBottom="80dp"
+            android:background="@color/backgroundDark">
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:background="@drawable/liness"/>
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/liness"/>
 
         <com.example.blue.xueya.SPO2WaveView
-            android:id="@+id/SPO2Wave"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="4dp"/>
+                android:id="@+id/SPO2Wave"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"/>
 
         <TextView
-            android:layout_margin="15dp"
-            android:textColor="@color/white"
-            android:text="pleth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+                android:layout_margin="15dp"
+                android:textColor="@color/white"
+                android:text="pleth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         <ImageView
-            android:background="@drawable/background_lines"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+                android:background="@drawable/background_lines"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
     </FrameLayout>
+    <!--    <ListView-->
+    <!--            android:id="@+id/datas"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--    >-->
+    <!--    </ListView>-->
+    <!--    <LinearLayout-->
+    <!--            android:id="@+id/temp_layout"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical"-->
+    <!--    >-->
+    <!--        <LinearLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--        >-->
+    <!--            <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--                    android:text="@string/temp"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:id="@+id/temp"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginLeft="60dp"-->
+    <!--                    android:textSize="20sp"-->
+    <!--                    android:text="@string/temp_blan"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:id="@+id/temp_blan"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--            >-->
+    <!--            </TextView>-->
+    <!--            <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginLeft="60dp"-->
+    <!--                    android:textSize="20sp"-->
+    <!--                    android:text="@string/wf"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:id="@+id/wf"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--            />-->
+    <!--        </LinearLayout>-->
+    <!--    </LinearLayout>-->
+    <!--    <LinearLayout-->
+    <!--            android:id="@+id/oxi"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:gravity="center_horizontal"-->
+    <!--            android:orientation="horizontal"-->
+    <!--    >-->
+    <!--        <LinearLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--        >-->
+    <!--            <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="@string/spo2"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:id="@+id/spo2"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--            />-->
+    <!--        </LinearLayout>-->
+    <!--        <LinearLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--        >-->
+    <!--            <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="@string/heart_rate"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:id="@+id/heart_rate"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--            />-->
+    <!--        </LinearLayout>-->
+    <!--        <LinearLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--        >-->
+    <!--            <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="@string/pi"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:id="@+id/pi"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--            />-->
+    <!--        </LinearLayout>-->
+    <!--        <LinearLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--        >-->
+    <!--            <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="@string/resvalue"-->
+    <!--            />-->
+    <!--            <TextView-->
+    <!--                    android:id="@+id/resvalue"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:textSize="20sp"-->
+    <!--            />-->
+    <!--        </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
 
 </LinearLayout>

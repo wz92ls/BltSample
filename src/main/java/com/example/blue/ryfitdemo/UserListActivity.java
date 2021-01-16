@@ -54,7 +54,7 @@ public class UserListActivity extends Activity {
 		mBluetoothOpration= MainActivity._BluetoothOpration;
 		mBluetoothOpration.addBluetoothOprationCallback(BOcallback);
 		initView ();
-		getActionBar().setTitle("View all users");
+		getActionBar().setTitle("查看用户");
         getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	BluetoothOprationCallback BOcallback=new BluetoothOprationCallback() {

@@ -40,6 +40,8 @@
 	        <Button android:id="@+id/btn_read"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+				android:background="@drawable/buttonblue"
+				android:textColor="@drawable/buttonfont"
 	            android:text="@string/readnumber"/>
 	        <EditText 
 	            android:id="@+id/et_number"
@@ -50,6 +52,8 @@
 	            <Button android:id="@+id/btn_write"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+				android:background="@drawable/buttonblue"
+				android:textColor="@drawable/buttonfont"
 	            android:text="@string/writenumber"/>
 	    </LinearLayout>
 	    <TextView 

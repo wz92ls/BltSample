@@ -168,11 +168,11 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
         button=$(R.id.sycn);
         button_time=$(R.id.sycn_time);
         version_show=$(R.id.version);
-        temp_blan=$(R.id.temp_blan);
+//        temp_blan=$(R.id.temp_blan);
         testtime= $(R.id.time);
         error= $(R.id.error);
         bettray=$(R.id.bettray);
-        wf=$(R.id.wf);
+//        wf=$(R.id.wf);
         voice_tx=$(R.id.voice);
         voiceSet=$(R.id.set_voice);
         blt_state=$(R.id.blt_state);
@@ -185,22 +185,22 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
         sys= $(R.id.sys_id);
         dia= $(R.id.dia_id);
         hr= $(R.id.hr_id);
-        isguestmode= $(R.id.isguestmode_id);
+//        isguestmode= $(R.id.isguestmode_id);
         bp_mesure=$(R.id.bp_mesure);
         start_wbp=$(R.id.wbp_start);
         user_send=$(R.id.user_send);
         listView =$(R.id.devive_list);//this for device
         datalist=$(R.id.datas);//this is for sync data from wbp
-        temp_Blt = $(R.id.temp);
-        oxi_linearlayout = $(R.id.oxi);
-        spo2 = $(R.id.spo2);
-        heart_rate = $(R.id.heart_rate);
-        pi = $(R.id.pi);
+//        temp_Blt = $(R.id.temp);
+//        oxi_linearlayout = $(R.id.oxi);
+//        spo2 = $(R.id.spo2);
+//        heart_rate = $(R.id.heart_rate);
+//        pi = $(R.id.pi);
         user=$(R.id.user);
-        resvalue = $(R.id.resvalue);
-        temp_layout = $(R.id.temp_layout);
+//        resvalue = $(R.id.resvalue);
+//        temp_layout = $(R.id.temp_layout);
         softwarevervion=$(R.id.softwarevervion);
-        temp_Blt.setVisibility(View.INVISIBLE);
+//        temp_Blt.setVisibility(View.INVISIBLE);
         listView.setOnItemClickListener(this);
         softwarevervion.setText(""+getAppVersionName(getApplicationContext()));
         scan_button.setOnClickListener(new View.OnClickListener() {
@@ -443,55 +443,55 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
                         break;
                     case MACRO_CODE_3://wt1 temp
                         listView.setVisibility(View.GONE);
-                        temp_Blt.setVisibility(View.VISIBLE);
+//                        temp_Blt.setVisibility(View.VISIBLE);
                         temp =(Double) msg.obj;
-                        temp_Blt.setText("" +formatDouble4(temp));
+//                        temp_Blt.setText("" +formatDouble4(temp));
                         break;
                     case MACRO_CODE_4://temp state high
                         listView.setVisibility(View.GONE);
-                        temp_Blt.setVisibility(View.VISIBLE);
-                        temp_Blt.setText("temp high");
+//                        temp_Blt.setVisibility(View.VISIBLE);
+//                        temp_Blt.setText("temp high");
                         break;
                     case MACRO_CODE_5://temp state low
                         listView.setVisibility(View.GONE);
-                        temp_Blt.setVisibility(View.VISIBLE);
-                        temp_Blt.setText("temp low");
+//                        temp_Blt.setVisibility(View.VISIBLE);
+//                        temp_Blt.setText("temp low");
                         break;
                     case MACRO_CODE_6://wt2 unblance templistView.setVisibility(View.GONE);
-                        temp_Blt.setVisibility(View.VISIBLE);
+//                        temp_Blt.setVisibility(View.VISIBLE);
                         temp = (Double) msg.obj;
-                        temp_Blt.setText("" + formatDouble4(temp));
+//                        temp_Blt.setText("" + formatDouble4(temp));
                         break;
                     case MACRO_CODE_7://wt2 balance temp
                         listView.setVisibility(View.GONE);
-                        temp_Blt.setVisibility(View.VISIBLE);
+//                        temp_Blt.setVisibility(View.VISIBLE);
                         bettray.setText(""+msg.arg1);
                         temp = (Double) msg.obj;
-                        temp_blan.setText("" + formatDouble4(temp));
+//                        temp_blan.setText("" + formatDouble4(temp));
                         break;
                     case MACRO_CODE_8://oxygen value
                         listView.setVisibility(View.GONE);
-                        temp_layout.setVisibility(View.GONE);
+//                        temp_layout.setVisibility(View.GONE);
                         spo2_s = (int) msg.obj;
-                        spo2.setText("" + spo2_s);
+//                        spo2.setText("" + spo2_s);
                         break;
                     case MACRO_CODE_9://W70
                         listView.setVisibility(View.GONE);
-                        temp_layout.setVisibility(View.GONE);
+//                        temp_layout.setVisibility(View.GONE);
                         heart_rate_s = (int) msg.obj;
-                        heart_rate.setText("" + heart_rate_s);
+//                        heart_rate.setText("" + heart_rate_s);
                         break;
                     case MACRO_CODE_10://w70pi
                         listView.setVisibility(View.GONE);
-                        temp_layout.setVisibility(View.GONE);
+//                        temp_layout.setVisibility(View.GONE);
                         pi_s = (Float) msg.obj;
-                        pi.setText("" + pi_s);
+//                        pi.setText("" + pi_s);
                         break;
                     case MACRO_CODE_11://w70res
                         listView.setVisibility(View.GONE);
-                        temp_layout.setVisibility(View.GONE);
+//                        temp_layout.setVisibility(View.GONE);
                         resvalue_s = (int) msg.obj;
-                        resvalue.setText("" + resvalue_s);
+//                        resvalue.setText("" + resvalue_s);
                         break;
                     case MACRO_CODE_12://Cuff pressure
                         listView.setVisibility(View.GONE);
@@ -505,7 +505,7 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
                                 dia.setText(""+msg.arg2);
                                 hr.setText(""+msg.obj);
                         String str2 = msg.getData().getString("isguestmode");
-                                isguestmode.setText(""+str2);
+//                                isguestmode.setText(""+str2);
                         break;
                     case MACRO_CODE_14://the state and version of the wbp
                         listView.setVisibility(View.GONE);
@@ -549,7 +549,7 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
                     case MACRO_CODE_20://fetal wf100
                         listView.setVisibility(View.GONE);
                         Log.e("fetal",""+msg.arg1);
-                        wf.setText(""+msg.arg1);
+//                        wf.setText(""+msg.arg1);
                         break;
                     case MACRO_CODE_21://voice wf100
                         listView.setVisibility(View.GONE);

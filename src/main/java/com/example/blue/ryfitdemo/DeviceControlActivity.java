@@ -428,12 +428,12 @@ public class DeviceControlActivity extends Activity {
 			invalidateOptionsMenu();
 
 			data.clear();
-			setData(OperationData.VIEW_ALL_USERS, "View all users");
-			setData(OperationData.PURE_GUEST_MODE, "Pure guest mode");
-			setData(OperationData.QUIT_PURE_GUEST_MODE, "Quit Pure guest mode");
-			setData(OperationData.READ_MAC_ADDRESS, "Read MAC address");
-			setData(OperationData.RESET_SCALE_PARAM, "Reset scale param");
-			setData(OperationData.ZERO, "Zero");
+			setData(OperationData.VIEW_ALL_USERS, "查看用户");
+			setData(OperationData.PURE_GUEST_MODE, "进入访客模式");
+			setData(OperationData.QUIT_PURE_GUEST_MODE, "退出访客模式");
+			setData(OperationData.READ_MAC_ADDRESS, "读取MAC地址");
+			setData(OperationData.RESET_SCALE_PARAM, "重置比例参数");
+			setData(OperationData.ZERO, "校准");
 			// setData("00","ReaderUpdateValue");
 			adapter.notifyDataSetChanged();
 			ll_test.setVisibility(View.VISIBLE);

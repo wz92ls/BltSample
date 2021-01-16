@@ -36,14 +36,14 @@
     <string name="no_history_data">No historical data</string>
     <string name="p9_test">P9 Test:</string>
     <string name="send">Send</string>
-    <string name="scale">Scale</string>
-    <string name="readnumber">RNumber</string>
-    <string name="writenumber">WNumber</string>
+    <string name="scale">比例</string>
+    <string name="readnumber">读参数</string>
+    <string name="writenumber">写参数</string>
 
     <string name="user_id">UserId：</string>
-    <string name="height">Height：</string>
-    <string name="age">Age：</string>
-    <string name="sex">Sex：</string>
+    <string name="height">身高：</string>
+    <string name="age">年龄：</string>
+    <string name="sex">性别：</string>
     <string name="delete_user">Delete User</string>
     <string name="update_user">Update User Info</string>
     <string name="delete_scale">Delete Scale</string>
@@ -53,20 +53,20 @@
     <string name="scale_switch">Scale Switch</string>
     <string name="create_user">Create User</string>
     <string name="read_user_history">Read User History</string>
-    <string name="man">Man</string>
-    <string name="woman">Woman</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
 
-    <string name="measuring_time">Measuring time:</string>
-    <string name="weight">Weight:</string>
-    <string name="fat">Fat:</string>
-    <string name="moisture">Moisture:</string>
-    <string name="muscle">Muscle:</string>
-    <string name="bone">Bone:</string>
-    <string name="calories">Calories:</string>
-    <string name="subcutaneous_fat">Subcutaneous fat:</string>
-    <string name="visceral_fat">Visceral fat:</string>
-    <string name="body_age">Body Age:</string>
-    <string name="dismiss">Dismiss</string>
+    <string name="measuring_time">时间:</string>
+    <string name="weight">体重:</string>
+    <string name="fat">脂肪:</string>
+    <string name="moisture">水分:</string>
+    <string name="muscle">肌肉:</string>
+    <string name="bone">骨质:</string>
+    <string name="calories">卡路里:</string>
+    <string name="subcutaneous_fat">皮下脂肪:</string>
+    <string name="visceral_fat">内脏脂肪:</string>
+    <string name="body_age">身体年龄:</string>
+    <string name="dismiss">解除</string>
     <color name="red">#FF0000</color>
 
     <!-- Menu items -->
