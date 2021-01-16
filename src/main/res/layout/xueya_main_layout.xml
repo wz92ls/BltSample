@@ -15,17 +15,23 @@
                     android:id="@+id/scan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
                     android:text="搜索"
-                    android:textSize="20sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/buttonblue"
+                    android:textColor="@drawable/buttonfont"
+                    android:minWidth="100dp"
             />
             <Button
                     android:id="@+id/stop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:background="@drawable/buttonblue"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@drawable/buttonfont"
                     android:text="停止"
-                    android:textSize="20sp"
+                    android:minWidth="100dp"
             />
         </LinearLayout>
         <LinearLayout
@@ -33,10 +39,12 @@
             android:layout_height="wrap_content"
             >
             <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="固件版本号:"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="固件版本号:"
+                    android:minWidth="100dp"
             />
             <TextView
                 android:id="@+id/version"
@@ -48,17 +56,23 @@
                 android:id="@+id/sycn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
                 android:text="同步数据"
-                android:textSize="20sp"
+                android:background="@drawable/buttonblue"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@drawable/buttonfont"
+                android:minWidth="100dp"
                 />
             <Button
                 android:id="@+id/sycn_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
                 android:text="同步时间"
-                android:textSize="20sp"
+                android:background="@drawable/buttonblue"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@drawable/buttonfont"
+                android:minWidth="100dp"
                 />
         </LinearLayout>
         <LinearLayout
@@ -66,10 +80,12 @@
             android:layout_height="wrap_content"
             >
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="电池电量:"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="电池电量:"
+                    android:minWidth="100dp"
                 />
             <TextView
                 android:id="@+id/bettray"
@@ -114,10 +130,12 @@
                 android:id="@+id/user_send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:gravity="right"
                 android:text="下发"
-                android:textSize="20sp"
+                android:background="@drawable/buttonblue"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@drawable/buttonfont"
+                android:minWidth="100dp"
                 />
             <TextView
                 android:id="@+id/user"
@@ -146,10 +164,12 @@
             android:id="@+id/wbp_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:gravity="right"
             android:text="开始测量"
-            android:textSize="20sp"
+            android:background="@drawable/buttonblue"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@drawable/buttonfont"
+            android:minWidth="100dp"
             />
 
     </LinearLayout>
@@ -173,10 +193,12 @@
                 android:id="@+id/set_voice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:gravity="right"
                 android:text="设置音量"
-                android:textSize="20sp"
+                android:background="@drawable/buttonblue"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@drawable/buttonfont"
+                android:minWidth="100dp"
                 />
 
             <TextView

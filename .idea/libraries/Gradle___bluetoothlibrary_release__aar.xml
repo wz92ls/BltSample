@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: :bluetoothlibrary-release:@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/76911d7fef8ff66b1749018d148b79c3/bluetoothlibrary-release/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/76911d7fef8ff66b1749018d148b79c3/bluetoothlibrary-release/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8d20e695e4f0a68f33c84f523c690390/bluetoothlibrary-release/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8d20e695e4f0a68f33c84f523c690390/bluetoothlibrary-release/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

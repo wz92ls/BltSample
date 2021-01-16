@@ -30,6 +30,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/xueya"
+                    android:textColor="@drawable/textfont"
+                    android:background="@drawable/backfont"
                     android:gravity="center_horizontal"
                     android:drawableTop="@android:drawable/ic_menu_crop"
                     android:textSize="18sp"/>
@@ -40,6 +42,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/tizhi"
+                    android:textColor="@drawable/textfont"
+                    android:background="@drawable/backfont"
                     android:gravity="center_horizontal"
                     android:drawableTop="@android:drawable/ic_menu_my_calendar"
                     android:textSize="18sp"/>
@@ -50,6 +54,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="@string/matong"
+                    android:textColor="@drawable/textfont"
+                    android:background="@drawable/backfont"
                     android:gravity="center_horizontal"
                     android:drawableTop="@android:drawable/ic_menu_delete"
                     android:textSize="18sp"/>

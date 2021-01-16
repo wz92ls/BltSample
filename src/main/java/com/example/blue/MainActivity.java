@@ -3,8 +3,12 @@ package com.example.blue;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -77,9 +81,9 @@ public class MainActivity extends TabActivity implements View.OnClickListener,MQ
 
         titel=getString(R.string.app_name)+"-"+getString(R.string.xueya);
         getActionBar().setTitle(titel);
-        tv1 = (TextView)findViewById(R.id.tv1);
-        tv2 = (TextView)findViewById(R.id.tv2);
-        tv3 = (TextView)findViewById(R.id.tv3);
+        tv1 = (TextView)$(R.id.tv1);
+        tv2 = (TextView)$(R.id.tv2);
+        tv3 = (TextView)$(R.id.tv3);
         tv1.setOnClickListener(this);
         tv2.setOnClickListener(this);
         tv3.setOnClickListener(this);
@@ -91,32 +95,53 @@ public class MainActivity extends TabActivity implements View.OnClickListener,MQ
 //        tabHost.addTab(getNewTab("tv4",R.string.unknown_device,R.drawable.ic_home,DeviceScanActivity.class));
         tabHost.setCurrentTabByTag("tv1");
 
-
+//        tv1.setBackgroundColor(getColor(R.color.colorPrimaryDark));
+        tv1.setSelected(true);
 
 
     }
 
-
+    public <T> T $(int id) {
+        return (T) findViewById(id);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tv1:
                 tabHost.setCurrentTabByTag("tv1");
+//                tv1.setBackgroundColor(getColor(R.color.colorPrimaryDark));
+//                tv2.setBackgroundColor(getColor(R.color.white));
+//                tv3.setBackgroundColor(getColor(R.color.white));
+                tv1.setSelected(true);
+                tv2.setSelected(false);
+                tv3.setSelected(false);
                 titel = getString(R.string.app_name)+"-"+getString(R.string.xueya);
                 getActionBar().setTitle(titel);
-                MQTTService.publish("测试一下子");
+//                MQTTService.publish("测试一下子");
 //                tizhi_MainActivity.messageCallback.onMessage("stop");
                 break;
             case R.id.tv2:
                 tabHost.setCurrentTabByTag("tv2");
+//                tv2.setBackgroundColor(getColor(R.color.colorPrimaryDark));
+//                tv1.setBackgroundColor(getColor(R.color.white));
+//                tv3.setBackgroundColor(getColor(R.color.white));
                 titel = getString(R.string.app_name)+"-"+getString(R.string.tizhi);
                 getActionBar().setTitle(titel);
+                tv2.setSelected(true);
+                tv1.setSelected(false);
+                tv3.setSelected(false);
 //                DeviceScanActivity.messageCallback.onMessage("stop");
                 break;
             case R.id.tv3:
                 tabHost.setCurrentTabByTag("tv3");
+//                tv3.setBackgroundColor(getColor(R.color.colorPrimaryDark));
+//                tv1.setBackgroundColor(getColor(R.color.white));
+//                tv2.setBackgroundColor(getColor(R.color.white));
                 titel = getString(R.string.app_name)+"-"+getString(R.string.matong);
                 getActionBar().setTitle(titel);
+                tv3.setSelected(true);
+                tv1.setSelected(false);
+                tv2.setSelected(false);
 //                DeviceScanActivity.messageCallback.onMessage("stop");
 //                tizhi_MainActivity.messageCallback.onMessage("stop");
                 break;

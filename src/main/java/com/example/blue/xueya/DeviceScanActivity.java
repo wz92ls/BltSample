@@ -210,6 +210,8 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
                 if (mBluetoothAdapter.isEnabled())
                 {
                     mBLE.scanLeDevice(true);//start to scan
+                    stop_button.setEnabled(true);
+                    scan_button.setEnabled(false);
                 }
 
             }
@@ -221,9 +223,12 @@ public class DeviceScanActivity extends Activity implements AdapterView.OnItemCl
                 if (mBluetoothAdapter.isEnabled())
                 {
                     mBLE.scanLeDevice(false);//start to scan
+                    scan_button.setEnabled(true);
+                    stop_button.setEnabled(false);
                 }
             }
         });
+        stop_button.setEnabled(false);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

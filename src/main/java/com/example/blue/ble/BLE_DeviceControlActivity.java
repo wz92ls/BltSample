@@ -110,7 +110,9 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
             mBleBluetoothLeService = null;
         }
     };
-
+    public <T> T $(int id) {
+        return (T) findViewById(id);
+    }
     // Handles various events fired by the Service.
     // ACTION_GATT_CONNECTED: connected to a GATT server.
     // ACTION_GATT_DISCONNECTED: disconnected from a GATT server.
@@ -305,31 +307,31 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
         mDeviceAddress = intent.getStringExtra(EXTRAS_DEVICE_ADDRESS);
 
         // Sets up UI references.
-        mDataField = (TextView) findViewById(R.id.data_value);
-        http_result=(TextView) findViewById(R.id.http_result);
-        edtSend = (EditText) this.findViewById(R.id.edtSend);
+        mDataField = (TextView) $(R.id.data_value);
+        http_result=(TextView) $(R.id.http_result);
+        edtSend = (EditText) $(R.id.edtSend);
         edtSend.setText("");
-        svResult = (ScrollView) this.findViewById(R.id.svResult);
-        svResult2=(ScrollView) this.findViewById(R.id.svResult2);
+        svResult = (ScrollView) $(R.id.svResult);
+        svResult2=(ScrollView) $(R.id.svResult2);
 //        btnSend = (Button) this.findViewById(R.id.btnSend);
 //		btnSend.setOnClickListener(new ClickEvent());
 //		btnSend.setEnabled(false);
 
-        btndeviceSend= (Button) this.findViewById(R.id.mt_deviceSend);
+        btndeviceSend= (Button) $(R.id.mt_deviceSend);
         btndeviceSend.setOnClickListener(new ClickEvent());
         btndeviceSend.setEnabled(false);
 
-        mt_shengyinkai=(Button) this.findViewById(R.id.mt_shengyinkai);
+        mt_shengyinkai=(Button) $(R.id.mt_shengyinkai);
         mt_shengyinkai.setOnClickListener(new ClickEvent());
         mt_shengyinkai.setEnabled(false);
 
 
-        mt_shengyinguan=(Button) this.findViewById(R.id.mt_shengyinguan);
+        mt_shengyinguan=(Button) $(R.id.mt_shengyinguan);
         mt_shengyinguan.setOnClickListener(new ClickEvent());
         mt_shengyinguan.setEnabled(false);
 
-        mt_gaikai=(Button) this.findViewById(R.id.mt_gaikai);
-        mt_gaiguan=(Button) this.findViewById(R.id.mt_gaiguan);
+        mt_gaikai=(Button) $(R.id.mt_gaikai);
+        mt_gaiguan=(Button) $(R.id.mt_gaiguan);
 
         mt_gaikai.setOnClickListener(new ClickEvent());
         mt_gaiguan.setOnClickListener(new ClickEvent());
@@ -338,10 +340,10 @@ public class BLE_DeviceControlActivity extends Activity implements MQTTService.I
         mt_gaiguan.setEnabled(false);
 
 
-        mt_deviceControl1=(Button) this.findViewById(R.id.deviceControl1);
-        mt_deviceControl2=(Button) this.findViewById(R.id.deviceControl2);
-        mt_deviceControl3=(Button) this.findViewById(R.id.deviceControl3);
-        mt_deviceControl4=(Button) this.findViewById(R.id.deviceControl4);
+        mt_deviceControl1=(Button) $(R.id.deviceControl1);
+        mt_deviceControl2=(Button) $(R.id.deviceControl2);
+        mt_deviceControl3=(Button) $(R.id.deviceControl3);
+        mt_deviceControl4=(Button) $(R.id.deviceControl4);
 
         mt_deviceControl1.setOnClickListener(new ClickEvent());
         mt_deviceControl2.setOnClickListener(new ClickEvent());
